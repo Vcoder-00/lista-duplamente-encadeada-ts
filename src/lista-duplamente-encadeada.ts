@@ -9,7 +9,7 @@ class Elemento {
         this.previous = null;
     }
 }
-class FilaDuplamenteEncadeada {
+class ListaDuplamenteEncadeada {
     // Ponteiros
 
     private head: null | Elemento; // "cabeça"
@@ -24,7 +24,7 @@ class FilaDuplamenteEncadeada {
 
     }
 
-    retornar_primeiro(): number | null {
+    public retornar_primeiro(): number | null {
         if (this.head){
           return this.head!.num;
         }
@@ -32,7 +32,7 @@ class FilaDuplamenteEncadeada {
     }
 
 
-    adicionar_na_frente(numero: number): void {
+    public adicionar_na_frente(numero: number): void {
         const novoElemento = new Elemento(numero);
         if (this.estaVazia() === true) {
             this.head = novoElemento;
@@ -45,7 +45,7 @@ class FilaDuplamenteEncadeada {
         }
     }
 
-    adicionar_atras(numero: number) {
+    public adicionar_atras(numero: number) {
         const novoElemento = new Elemento(numero);
         if (this.estaVazia() === true) {
             this.head = novoElemento;
@@ -58,7 +58,7 @@ class FilaDuplamenteEncadeada {
         }
     }
 
-    adicionar_em_posicao(numero: number, posicao: number): void {
+    public adicionar_em_posicao(numero: number, posicao: number): void {
         if (posicao < 0) {
             return console.log("Erro: posição inválida");
         }
@@ -98,7 +98,7 @@ class FilaDuplamenteEncadeada {
         return;
     }
 
-    remover_na_frente(): number | void {
+    public remover_na_frente(): number | void {
         if (this.estaVazia() === true) {
             return console.log("Erro: fila já está vazia!")
         }
@@ -115,7 +115,7 @@ class FilaDuplamenteEncadeada {
         }
     }
 
-    remover_atras(): number | void {
+    public remover_atras(): number | void {
         if (this.estaVazia() === true) {
             return console.log("Erro: fila já está vazia!");
         }
@@ -132,7 +132,7 @@ class FilaDuplamenteEncadeada {
         }
     }
 
-    remover_em_posicao(posicao: number): void | number | null {
+    public remover_em_posicao(posicao: number): void | number | null {
         if (posicao < 0) {
             return console.log("Erro: posição inválida");
         }
@@ -176,7 +176,7 @@ class FilaDuplamenteEncadeada {
         return ponteiro.num;
     }
 
-    buscar(num: number) {
+    public buscar(num: number) {
         let ponteiro = this.head;
         let flag: boolean = false;
         while (ponteiro != null) {
@@ -189,7 +189,7 @@ class FilaDuplamenteEncadeada {
         return console.log(flag);
     }
 
-    exibirLista(): void | Array<number> {
+    public exibirLista(): void | Array<number> {
         if (this.estaVazia() === true) {
             return console.log("[]");
         }
@@ -203,39 +203,38 @@ class FilaDuplamenteEncadeada {
         return resultado;
     }
 
-    exibirTamanho(): void {
+    public exibirTamanho(): void {
         const resultado = this.exibirLista();
         if (resultado) {
-            return console.log(`Tamanho da fila: ${resultado!.length}`)
+            return console.log(`Tamanho da lista: ${resultado!.length}`)
         }
         return console.log("Lista vazia");
     }
 
-    estaVazia(): boolean {
+    public estaVazia(): boolean {
         if (this.head === null || this.tail === null) {
             return true;
         }
         return false;
     }
 
-
 }
 
 
-const f1 = new FilaDuplamenteEncadeada()
-console.log(f1.estaVazia()); // true
-f1.adicionar_na_frente(3);
-f1.adicionar_na_frente(4);
-f1.adicionar_atras(2);
-f1.adicionar_atras(1);
-f1.exibirLista(); // 4, 3, 2, 1
-f1.remover_atras();
-f1.remover_na_frente();
-f1.exibirLista(); // 3, 2
-f1.exibirTamanho(); // Tamanho da fila: 2
-f1.adicionar_em_posicao(1,1);
-f1.exibirLista(); // 3, 1, 2
-f1.remover_em_posicao(1)
-f1.exibirLista();  // 3, 2
-f1.buscar(2); // true
-f1.buscar(4) // false
+const l1 = new ListaDuplamenteEncadeada()
+console.log(l1.estaVazia()); // true
+l1.adicionar_na_frente(3);
+l1.adicionar_na_frente(4);
+l1.adicionar_atras(2);
+l1.adicionar_atras(1);
+l1.exibirLista(); // 4, 3, 2, 1
+l1.remover_atras();
+l1.remover_na_frente();
+l1.exibirLista(); // 3, 2
+l1.exibirTamanho(); // Tamanho da lista: 2
+l1.adicionar_em_posicao(1,1);
+l1.exibirLista(); // 3, 1, 2
+l1.remover_em_posicao(1)
+l1.exibirLista();  // 3, 2
+l1.buscar(2); // true
+l1.buscar(4) // false
